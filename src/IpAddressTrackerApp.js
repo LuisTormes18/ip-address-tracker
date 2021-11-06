@@ -1,5 +1,6 @@
 import AppProvider from "./context/AppProvider";
 import Header from './components/Header';
+import MapView from './components/MapView';
 
 function IpAddressTrackerApp() {
 
@@ -7,6 +8,7 @@ function IpAddressTrackerApp() {
         <AppProvider>
             <div className="App">
                 <Header />
+                <MapView />
             </div>
         </AppProvider>
     );

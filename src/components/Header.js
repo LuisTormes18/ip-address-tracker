@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
 import { getAddressByIp } from "./../services/geolocationApi";
+import { appContext } from './../context/AppProvider';
+import Location from './Location';
 
 function Header() {
+    const { handleDirection } = useContext(appContext);
     const [ipAddress, setIpAddress] = useState("");
 
     const handleInputChange = (e) => {
@@ -10,12 +14,20 @@ function Header() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-       await getAddressByIp(ipAddress);
+        const data =  await getAddressByIp(ipAddress);
+        const location = {
+            ip: data.ip,
+            city:data.city,
+            country:data.country_name,
+            languages: data.location.languages[0].name
+        }
+        handleDirection(location,{latitude:data.latitude,longitude:data.longitude});
     };
     return (
         <header className="header">
+            <h1>IP Address Tracker</h1>
             <div>
-                <form className="search-form">
+                <form className="search-form" onSubmit={handleSubmit}>
                     <div>
                         <input
                             type="text"
@@ -24,10 +36,12 @@ function Header() {
                             value={ipAddress}
                             onChange={handleInputChange}
                         />
-                        <button onClick={handleSubmit}>search</button>
+                        < input id='btn-submit' type='submit' value='>'/>
                     </div>
                 </form>
             </div>
+            <Location />
+
         </header>
     );
 }

@@ -1,13 +1,28 @@
 import React, { createContext, useState } from "react";
 
-const appContext = createContext();
+export const appContext = createContext();
 
 function AppProvider({ children }) {
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState({
+            ip: '-----',
+            city:'-----',
+            country:'-----',
+            languages: '-----',
+        });
+    const [coordinates, setCoordinates] = useState(
+        {latitude:'37.38801956176758',
+        longitude:'-122.07431030273438'
+    });
+
+    const handleDirection = (location,coordinates)=>{
+        setLocation(location);
+        setCoordinates(coordinates);
+    }
 
     const contextValue = {
         location,
-        setLocation,
+        coordinates,
+        handleDirection,
     };
 
     return (

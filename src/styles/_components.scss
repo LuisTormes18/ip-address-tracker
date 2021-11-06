@@ -2,9 +2,60 @@
     background-image: url('./../images/pattern-bg.png');
     height: 250px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap:20px;
+
+    h1{
+    padding-top: 40px;
+    color:white;
+    font-family: arial;
+    font-size: 30px;
+
+    }
 }
 .search-form{
+
+	input{
+	padding: 15px;
+	border:none;
+	width: 270px;
+	border-radius: 10px 0px 0px 10px;
+
+	}
+	#btn-submit{
+	width: 50px;
+	background: #2c2c2c;
+	color:white;
+
+	border-radius: 0px 10px 10px 0px;
+
+	}
+	
     
+}
+.box-location{
+	position:absolute;
+	width:450px;
+	margin-top: 160px;
+	padding:40px;
+
+	border-radius: 10px;
+	background-color: white;
+
+	display:flex;
+	justify-content:space-between;
+	gap:10px;
+
+	span{
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #c2c2c2;
+	font-weigth: bold;
+	}
+	h3{
+		text-align: center;
+		font-size: 18px;
+		padding-top: 10px;
+	}
 }
